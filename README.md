@@ -1,6 +1,6 @@
 # Q1:
 
-### Implement a Vision Transformer (ViT) and train it on the CIFAR-10 dataset (10 classes). The objective is to achieve the highest possible test accuracy using only Google Colab. Various improvements and tricks have been used as permitted.
+### Implement a Vision Transformer (ViT) and train it on the CIFAR-10 dataset (10 classes).
 Reference Paper: "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale" (Dosovitskiy et al., ICLR 2021).
 
 ## How to Run (in Colab)
