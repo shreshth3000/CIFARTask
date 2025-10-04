@@ -1,6 +1,6 @@
 # Q1:
 
-### Implement a Vision Transformer (ViT) and train it on the CIFAR-10 dataset (10 classes).
+### Implement a Vision Transformer (ViT) and train it on the CIFAR-10 dataset (10 classes)
 Reference Paper: "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale" (Dosovitskiy et al., ICLR 2021).
 
 ## How to Run (in Colab)
@@ -50,3 +50,51 @@ Reference Paper: "An Image is Worth 16x16 Words: Transformers for Image Recognit
 - Optimizer and schedule: AdamW with cosine scheduling and warmup stabilized training and improved convergence over simpler optimizers.
 
 - Overlapping vs non-overlapping patches: Standard non-overlapping patches were used; attempts at overlap did not yield significant improvement for this dataset and model size (Such as shifted patch tokenization).
+
+# Q2
+
+### Implement text-prompted segmentation of objects using SAM 2
+
+## How to Run (in Colab)
+
+* Upload q2.ipynb to Google Colab
+* Set runtime to GPU
+* All necessary dependencies are installed in the notebook cells at the top, but will be prompted to restart the session in order to use required dependencies.
+* Run cells sequentially beginning from the installation section.
+* Upload your image when prompted.
+* Enter your text prompt based on the image.
+
+## Pipeline Overview
+
+### Step 1: Text-to-Regions (GroundingDINO)
+* Load GroundingDINO model for open-vocabulary object detection
+* Input: Image + text prompt
+* Output: Bounding boxes of detected objects matching the text description
+
+### Step 2: Region-to-Masks (SAM 2)
+* Load SAM 2 model for high-quality segmentation
+* Input: Image + bounding boxes from Step 1
+* Output: Precise pixel-level segmentation masks
+
+### Step 3: Visualization
+* Overlay segmentation masks on original image
+* Display bounding boxes with masks for verification
+
+## Model Configuration
+
+| Component | Model |
+|-----------|-------|
+| Object Detection | GroundingDINO (Swin-T backbone) |
+| Segmentation | SAM 2 Hiera-Large |
+| Detection Threshold | 0.35 (box), 0.25 (text) |
+| Device | CUDA (GPU recommended) |
+
+## Limitations
+
+* Performance depends on GroundingDINO's ability to detect objects from text descriptions, so complex or ambiguous text prompts may result in false positives or missed detections
+* Small objects or crowded scenes may be challenging for accurate segmentation
+* Model and dependency loading time can be significant on first run
+* Text prompts must be in English and simple descriptions work best
+
+
+
