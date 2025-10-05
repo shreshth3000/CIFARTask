@@ -97,7 +97,7 @@ Reference Paper: "An Image is Worth 16x16 Words: Transformers for Image Recognit
 * Text prompts must be in English and simple descriptions work best
 
 ## Bonus Task: Text Based Video Segmentation
-* Accomplished using Groundingdino seeds and SAM2's image predictor applied sequentially to the video frames extracted.
+* Accomplished using GroundingDINO seeds and SAM2's image predictor applied sequentially to the video frames extracted.
 * Upload a relatively short video (10-30s) when prompted and enter a text prompt to establish the seed. SAM2 then processes the seed across different video frames.
 
 
